@@ -72,7 +72,13 @@ class LoginPage extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        "/home",
+                        (route) => false,
+                      );
+                    },
                     child: Text('Iniciar sesión'),
                   ),
                 ),

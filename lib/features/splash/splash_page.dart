@@ -8,6 +8,7 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  bool isAuth = false;
   @override
   void initState() {
     super.initState();
@@ -17,8 +18,9 @@ class _SplashPageState extends State<SplashPage> {
   void _navigateToOnboarding() {
     Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
-        //route
-        Navigator.of(context).pushReplacementNamed('/onboarding');
+        Navigator.of(
+          context,
+        ).pushReplacementNamed(isAuth ? '/home' : '/onboarding');
       }
     });
   }
