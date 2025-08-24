@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:limpio_ya/shared/widgets/form_field.dart';
 
-class ForgotPasswordPage extends StatelessWidget {
-  const ForgotPasswordPage({super.key});
+class NewPasswordPage extends StatelessWidget {
+  const NewPasswordPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +32,16 @@ class ForgotPasswordPage extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Recuperar contraseña',
+                  'Nueva contraseña',
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(),
                 CustomFormField(
-                  label: 'Correo electrónico',
+                  label: 'Contraseña',
+                  controller: TextEditingController(),
+                ),
+                CustomFormField(
+                  label: 'Confirmar contraseña',
                   controller: TextEditingController(),
                 ),
 
@@ -45,9 +49,13 @@ class ForgotPasswordPage extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, "/auth/verify-account");
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        "/auth/login",
+                        (route) => false,
+                      );
                     },
-                    child: Text('Enviar código'),
+                    child: Text('Crear nueva contraseña'),
                   ),
                 ),
               ],
