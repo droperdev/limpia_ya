@@ -17,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
   void _navigateToOnboarding() {
     Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
-        //route 
+        //route
         Navigator.of(context).pushReplacementNamed('/onboarding');
       }
     });

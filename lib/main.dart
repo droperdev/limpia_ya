@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:limpio_ya/core/injection/injection.dart';
+import 'package:limpio_ya/core/theme/app_theme.dart';
+import 'package:limpio_ya/core/theme/theme_cubit.dart';
+import 'package:limpio_ya/features/auth/presentation/login_page.dart';
+import 'package:limpio_ya/features/auth/presentation/register_page.dart';
 import 'package:limpio_ya/features/onboarding/onboarding_page.dart';
 import 'package:limpio_ya/features/splash/splash_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await init();
   runApp(const MyApp());
 }
 
@@ -11,16 +19,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Limpia Ya',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+    return BlocProvider(
+      create: (_) => sl<ThemeCubit>(),
+      child: BlocBuilder<ThemeCubit, ThemeData>(
+        builder: (context, state) => MaterialApp(
+          title: 'Limpia Ya',
+          theme: state,
+          routes: {
+            '/splash': (context) => const SplashPage(),
+            '/onboarding': (context) => const OnboardingPage(),
+            '/auth/login': (context) => const LoginPage(),
+            '/auth/register': (context) => const RegisterPage(),
+          },
+          home: SplashPage(),
+        ),
       ),
-      routes: {
-        '/splash': (context) => const SplashPage(),
-        '/onboarding': (context) => const OnboardingPage(),
-      },
-      home: SplashPage(),
     );
   }
 }
