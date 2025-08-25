@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:limpio_ya/shared/widgets/form_field.dart';
+import 'package:limpio_ya/shared/widgets/custom_form_field.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class RegisterPage extends StatelessWidget {

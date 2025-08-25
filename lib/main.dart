@@ -7,7 +7,7 @@ import 'package:limpio_ya/features/auth/presentation/login_page.dart';
 import 'package:limpio_ya/features/auth/presentation/new_password_page.dart';
 import 'package:limpio_ya/features/auth/presentation/register_page.dart';
 import 'package:limpio_ya/features/auth/presentation/verify_account_page.dart';
-import 'package:limpio_ya/features/home/presentation/home_page.dart';
+import 'package:limpio_ya/features/main/presentation/main_page.dart';
 import 'package:limpio_ya/features/onboarding/onboarding_page.dart';
 import 'package:limpio_ya/features/splash/splash_page.dart';
 
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
             '/auth/forgot-password': (context) => const ForgotPasswordPage(),
             '/auth/verify-account': (context) => const VerifyAccountPage(),
             '/auth/new-password': (context) => const NewPasswordPage(),
-            '/home': (context) => const HomePage(),
+            '/main': (context) => const MainPage(),
           },
           home: SplashPage(),
         ),

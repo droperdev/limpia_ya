@@ -7,6 +7,8 @@ class CustomFormField extends StatelessWidget {
     required this.controller,
     required this.label,
     this.isPassword = false,
+    this.iconLeft,
+    this.iconRight,
     this.keyboardType = TextInputType.text,
     this.inputFormatters = const [],
   });
@@ -14,6 +16,8 @@ class CustomFormField extends StatelessWidget {
   final TextEditingController controller;
   final String label;
   final bool isPassword;
+  final Widget? iconLeft;
+  final Widget? iconRight;
   final TextInputType keyboardType;
   final List<TextInputFormatter> inputFormatters;
 
@@ -23,14 +27,13 @@ class CustomFormField extends StatelessWidget {
       autofocus: false,
       obscureText: isPassword,
       controller: controller,
-      keyboardType: keyboardType,
+      keyboardType: keyboardType, //f9faff
       inputFormatters: inputFormatters,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
-        border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(16.0)),
-        ),
         labelText: label,
+        prefix: iconLeft,
+        suffixIcon: iconRight,
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {

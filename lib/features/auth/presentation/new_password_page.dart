@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:limpio_ya/shared/widgets/form_field.dart';
+import 'package:limpio_ya/shared/widgets/custom_form_field.dart';
 
 class NewPasswordPage extends StatelessWidget {
   const NewPasswordPage({super.key});
