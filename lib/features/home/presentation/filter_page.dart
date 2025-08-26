@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:limpio_ya/shared/widgets/custom_title.dart';
+import 'package:limpio_ya/shared/widgets/price_range_picker.dart';
 
 class FilterPage extends StatelessWidget {
   const FilterPage({super.key});
@@ -49,21 +50,81 @@ class FilterPage extends StatelessWidget {
             SingleChildScrollView(
               padding: const EdgeInsets.all(16),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 16,
                 children: [
-                  SizedBox(),
                   CustomTitle(title: 'Ubicación'),
 
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, "/auth/verify-account");
-                      },
-                      child: Text('Enviar código'),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Color.fromRGBO(249, 250, 255, 1),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Row(
+                        spacing: 8,
+                        children: [
+                          Expanded(child: Text('Lima, Perú')),
+                          Icon(Icons.arrow_drop_down, color: Colors.grey),
+                        ],
+                      ),
                     ),
                   ),
+                  CustomTitle(title: 'Categorias'),
+                  SizedBox(
+                    height: 150,
+                    child: ListView.separated(
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(width: 16),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 4,
+                      itemBuilder: (context, index) => SizedBox(
+                        width: MediaQuery.of(context).size.width / 2 - 24,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Color.fromRGBO(249, 250, 255, 1),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          width: 100,
+
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: 50,
+                                  height: 50,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.green.shade100,
+                                      borderRadius: BorderRadius.circular(16),
+                                    ),
+                                    child: Icon(
+                                      Icons.clean_hands,
+                                      color: Colors.green,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 8),
+                                const Text(
+                                  'Limpieza ',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  CustomTitle(title: 'Rango de precios'),
+                  PriceRangePicker(),
                 ],
               ),
             ),
